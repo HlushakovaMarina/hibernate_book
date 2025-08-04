@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 group = 'hlushakovaM'
@@ -10,8 +12,28 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.postgresql:postgresql:42.7.3'
+    implementation 'org.apache.logging.log4j:log4j-core:2.24.3'
+    implementation 'org.apache.logging.log4j:log4j-api:2.24.3'
+    implementation 'com.google.inject:guice:6.0.0'
+    implementation 'com.google.inject.extensions:guice-persist:6.0.0'
+    implementation 'org.hibernate.orm:hibernate-core:7.0.9.Final'
+    implementation 'jakarta.persistence:jakarta.persistence-api:3.2.0'
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class' : 'BookApplication'
+    }
+    archiveFileName = 'book-manager.jar'
+}
+application {
+    mainClass = 'hlushakovaM.BookApplication'
+}
+shadowJar {
+    archiveFileName.set('book-manager.jar')
 }
 
 test {
