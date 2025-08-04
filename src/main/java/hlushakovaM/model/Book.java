@@ -1,21 +1,30 @@
-package model;
+package hlushakovaM.model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Book {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(nullable = false)
+
     private String title;
     private String author;
 
-    public Book(int id, String title, String author) {
-        this.id = id;
+    public Book() {
+    }
+
+    public Book(String title, String author) {
         this.title = title;
         this.author = author;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
