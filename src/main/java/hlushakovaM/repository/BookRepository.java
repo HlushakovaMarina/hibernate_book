@@ -3,43 +3,65 @@ package hlushakovaM.repository;
 import hlushakovaM.model.Book;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.Optional;
 
 public class BookRepository {
-    private final EntityManagerFactory emf;
+    private static final Logger logger = LogManager.getLogger(BookRepository.class);
+    private final EntityManager em;
 
     @Inject
-    public BookRepository(EntityManagerFactory emf) {
-        this.emf = emf;
+    public BookRepository(EntityManager em) {
+        this.em = em;
     }
 
-    private EntityManager getEntityManager(){
-        return emf.createEntityManager();
-    }
     public List<Book> findAll() {
-        return getEntityManager().createQuery("SELECT b FROM Book b", Book.class).getResultList();
+        return em.createQuery("SELECT b FROM Book b", Book.class).getResultList();
     }
 
     public Optional<Book> findById(Long id) {
-        Book book = getEntityManager().find(Book.class, id);
+        Book book = em.find(Book.class, id);
         return Optional.ofNullable(book);
     }
 
     public Book save(Book book) {
-        EntityManager entityManager = getEntityManager();
-        entityManager.getTransaction().begin();
-        Book bookResult = null;
-        if (book.getId() == null) {
-            entityManager.persist(book);
-            entityManager.flush();
-            bookResult =  book;
-        } else {
-            bookResult = entityManager.merge(book);
+        logger.info("Create book: {}", book);
+        em.persist(book);
+        return book;
+    }
+
+    public Book autoUpdateBook(Long id, String newTitle, String author) {
+        logger.info("Updating book with ID: {}", id);
+        Book book = em.find(Book.class, id);
+        if (book != null) {
+            book.setTitle(newTitle);
+            book.setAuthor(author);
+            logger.info("Modified book in context: {}", book);
         }
-        entityManager.getTransaction().commit();
-        return bookResult;
+        return book;
+    }
+
+    public List<Book> findByTitle(String title) {
+        return em.createQuery("SELECT b FROM Book b WHERE b.title LIKE :title", Book.class)
+                .setParameter("title", "%" + title + "%")
+                .getResultList();
+    }
+
+    public List<Book> findByAuthor(String author) {
+        return em.createNamedQuery("Book.findByAuthor", Book.class)
+                .setParameter("author", author)
+                .getResultList();
+    }
+
+    public void deleteBookById(Long id) {
+        logger.info("Deleting book with ID: {}", id);
+        Book book = em.find(Book.class, id);
+        if (book != null) {
+            em.remove(book);
+
+        }
     }
 }

@@ -3,6 +3,8 @@ package hlushakovaM.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "book")
+@NamedQuery(name =  "Book.findByAuthor", query = "SELECT b FROM Book b WHERE b.author = :author")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -19,6 +19,7 @@ dependencies {
     implementation 'com.google.inject.extensions:guice-persist:7.0.0'
     implementation 'org.hibernate.orm:hibernate-core:7.0.9.Final'
     implementation 'jakarta.persistence:jakarta.persistence-api:3.2.0'
+    implementation ("org.ow2.asm:asm:9.8")
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
@@ -34,6 +35,9 @@ application {
 }
 shadowJar {
     archiveFileName.set('book-manager.jar')
+}
+compileJava {
+    options.encoding = 'UTF-8'
 }
 
 test {

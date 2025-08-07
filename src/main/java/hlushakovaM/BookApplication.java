@@ -25,14 +25,21 @@ public class BookApplication {
             Book book1 = new Book("Война и мир", "Лев Толстой");
             Book book2 = new Book("Преступление и наказание", "Фёдор Достоевский");
             service.save(book1);
+            logger.info("Create book with ID: {}", book1.getId());
             service.save(book2);
+            logger.info("Create book with ID: {}", book2.getId());
             logger.info("Книги сохранены");
 
             List<Book> books = service.findAll();
             books.forEach(logger::info);
 
-            service.update(1L, "Война и мир (обновлено)")
-                    .ifPresent(b -> logger.info("книга обновлена: " + b));
+            service.autoUpdateBook(book1.getId(),"Новое название книги","Новый автор книги");
+            books.forEach(logger::info);
+
+            List<Book> byTitle = service.findByTitle("Гарри Поттер и кубок огня");
+            byTitle.forEach(logger::info);
+            List<Book> byAuthor = service.findByAuthor("Джоан Роулинг");
+            byAuthor.forEach(logger::info);
 
         } catch (Exception e) {
             logger.error("Ошибка в работе с БД", e);
