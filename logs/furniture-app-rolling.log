@@ -1,0 +1,50 @@
+2025-08-07 18:49:33.724 [main] INFO  hlushakovaM.config.AppModule - Книги сохранены
+2025-08-07 18:49:35.819 [main] INFO  hlushakovaM.config.AppModule - Book{id=2, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 18:49:35.820 [main] INFO  hlushakovaM.config.AppModule - Book{id=3, title='Война и мир', author='Лев Толстой'}
+2025-08-07 18:49:35.821 [main] INFO  hlushakovaM.config.AppModule - Book{id=4, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 18:49:35.824 [main] INFO  hlushakovaM.config.AppModule - Book{id=1, title='Война и мир (обновлено)', author='Лев Толстой'}
+2025-08-07 18:49:35.825 [main] INFO  hlushakovaM.config.AppModule - Book{id=5, title='Война и мир', author='Лев Толстой'}
+2025-08-07 18:49:35.825 [main] INFO  hlushakovaM.config.AppModule - Book{id=6, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 18:49:35.846 [main] INFO  hlushakovaM.config.AppModule - книга обновлена: Book{id=1, title='Война и мир (обновлено)', author='Лев Толстой'}
+2025-08-07 20:33:01.956 [main] INFO  hlushakovaM.config.AppModule - Create book with ID: 7
+2025-08-07 20:33:02.021 [main] INFO  hlushakovaM.config.AppModule - Create book with ID: 8
+2025-08-07 20:33:02.021 [main] INFO  hlushakovaM.config.AppModule - Книги сохранены
+2025-08-07 20:33:04.326 [main] INFO  hlushakovaM.config.AppModule - Book{id=2, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 20:33:04.326 [main] INFO  hlushakovaM.config.AppModule - Book{id=3, title='Война и мир', author='Лев Толстой'}
+2025-08-07 20:33:04.326 [main] INFO  hlushakovaM.config.AppModule - Book{id=4, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 20:33:04.326 [main] INFO  hlushakovaM.config.AppModule - Book{id=1, title='Война и мир (обновлено)', author='Лев Толстой'}
+2025-08-07 20:33:04.326 [main] INFO  hlushakovaM.config.AppModule - Book{id=5, title='Война и мир', author='Лев Толстой'}
+2025-08-07 20:33:04.356 [main] INFO  hlushakovaM.config.AppModule - Book{id=6, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 20:33:04.367 [main] INFO  hlushakovaM.config.AppModule - Book{id=7, title='Война и мир', author='Лев Толстой'}
+2025-08-07 20:33:04.374 [main] INFO  hlushakovaM.config.AppModule - Book{id=8, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 20:33:04.677 [main] INFO  hlushakovaM.config.AppModule - Book{id=2, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 20:33:04.677 [main] INFO  hlushakovaM.config.AppModule - Book{id=3, title='Война и мир', author='Лев Толстой'}
+2025-08-07 20:33:04.677 [main] INFO  hlushakovaM.config.AppModule - Book{id=4, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 20:33:04.677 [main] INFO  hlushakovaM.config.AppModule - Book{id=1, title='Война и мир (обновлено)', author='Лев Толстой'}
+2025-08-07 20:33:04.677 [main] INFO  hlushakovaM.config.AppModule - Book{id=5, title='Война и мир', author='Лев Толстой'}
+2025-08-07 20:33:04.677 [main] INFO  hlushakovaM.config.AppModule - Book{id=6, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 20:33:04.677 [main] INFO  hlushakovaM.config.AppModule - Book{id=7, title='Новое название книги', author='Новый автор книги'}
+2025-08-07 20:33:04.677 [main] INFO  hlushakovaM.config.AppModule - Book{id=8, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 21:13:14.701 [main] INFO  hlushakovaM.config.AppModule - Create book with ID: 9
+2025-08-07 21:13:14.736 [main] INFO  hlushakovaM.config.AppModule - Create book with ID: 10
+2025-08-07 21:13:14.736 [main] INFO  hlushakovaM.config.AppModule - Книги сохранены
+2025-08-07 21:13:14.943 [main] INFO  hlushakovaM.config.AppModule - Book{id=2, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 21:13:14.943 [main] INFO  hlushakovaM.config.AppModule - Book{id=3, title='Война и мир', author='Лев Толстой'}
+2025-08-07 21:13:14.943 [main] INFO  hlushakovaM.config.AppModule - Book{id=4, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 21:13:14.943 [main] INFO  hlushakovaM.config.AppModule - Book{id=1, title='Война и мир (обновлено)', author='Лев Толстой'}
+2025-08-07 21:13:14.943 [main] INFO  hlushakovaM.config.AppModule - Book{id=5, title='Война и мир', author='Лев Толстой'}
+2025-08-07 21:13:14.943 [main] INFO  hlushakovaM.config.AppModule - Book{id=6, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 21:13:14.943 [main] INFO  hlushakovaM.config.AppModule - Book{id=8, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 21:13:14.943 [main] INFO  hlushakovaM.config.AppModule - Book{id=7, title='Новое название книги', author='Новый автор книги'}
+2025-08-07 21:13:14.959 [main] INFO  hlushakovaM.config.AppModule - Book{id=9, title='Война и мир', author='Лев Толстой'}
+2025-08-07 21:13:14.959 [main] INFO  hlushakovaM.config.AppModule - Book{id=10, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 21:13:15.013 [main] INFO  hlushakovaM.config.AppModule - Book{id=2, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 21:13:15.014 [main] INFO  hlushakovaM.config.AppModule - Book{id=3, title='Война и мир', author='Лев Толстой'}
+2025-08-07 21:13:15.014 [main] INFO  hlushakovaM.config.AppModule - Book{id=4, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 21:13:15.014 [main] INFO  hlushakovaM.config.AppModule - Book{id=1, title='Война и мир (обновлено)', author='Лев Толстой'}
+2025-08-07 21:13:15.018 [main] INFO  hlushakovaM.config.AppModule - Book{id=5, title='Война и мир', author='Лев Толстой'}
+2025-08-07 21:13:15.018 [main] INFO  hlushakovaM.config.AppModule - Book{id=6, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 21:13:15.018 [main] INFO  hlushakovaM.config.AppModule - Book{id=8, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-07 21:13:15.019 [main] INFO  hlushakovaM.config.AppModule - Book{id=7, title='Новое название книги', author='Новый автор книги'}
+2025-08-07 21:13:15.020 [main] INFO  hlushakovaM.config.AppModule - Book{id=9, title='Новое название книги', author='Новый автор книги'}
+2025-08-07 21:13:15.020 [main] INFO  hlushakovaM.config.AppModule - Book{id=10, title='Преступление и наказание', author='Фёдор Достоевский'}
