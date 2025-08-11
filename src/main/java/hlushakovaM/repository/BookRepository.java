@@ -1,5 +1,6 @@
 package hlushakovaM.repository;
 
+import hlushakovaM.model.Author;
 import hlushakovaM.model.Book;
 import hlushakovaM.model.BookDetails;
 import hlushakovaM.model.Review;
@@ -10,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public class BookRepository {
     private static final Logger logger = LogManager.getLogger(BookRepository.class);
@@ -20,10 +22,14 @@ public class BookRepository {
         this.em = em;
     }
 
-    public Book saveWithDetails(Book book, BookDetails bookDetails, List<Review> reviews){
+    public Book saveWithDetails(Book book, BookDetails bookDetails,
+                                List<Review> reviews, Set<Author> authors){
         book.setBookDetails(bookDetails);
         book.setReviews(reviews);
+        book.setAuthors(authors);
+        authors.forEach(a->a.getBooks().add(book) );
         reviews.forEach(r -> r.setBook(book));
+
         //bookDetails.setBook(book);
         return em.merge(book);
     }

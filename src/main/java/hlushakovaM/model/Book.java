@@ -3,7 +3,9 @@ package hlushakovaM.model;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "book")
@@ -15,7 +17,6 @@ public class Book {
     @Column(nullable = false)
 
     private String title;
-    private String author;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "details_id", nullable = false)
@@ -25,12 +26,18 @@ public class Book {
             fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Review> reviews = new ArrayList<>();
 
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "book_author",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
+    private Set<Author> authors = new HashSet<>();
     public Book() {
     }
 
-    public Book(String title, String author) {
+    public Book(String title) {
         this.title = title;
-        this.author = author;
     }
 
     public List<Review> getReviews() {
@@ -65,12 +72,12 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthor() {
-        return author;
+    public Set<Author> getAuthors() {
+        return authors;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthors(Set<Author> authors) {
+        this.authors = authors;
     }
 
     @Override
@@ -78,7 +85,9 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
+                ", bookDetails=" + bookDetails +
+                ", reviews=" + reviews +
+                ", authors=" + authors +
                 '}';
     }
 }
