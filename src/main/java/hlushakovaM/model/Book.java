@@ -14,12 +14,24 @@ public class Book {
     private String title;
     private String author;
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "details_id", nullable = false)
+    private BookDetails bookDetails;
+
     public Book() {
     }
 
     public Book(String title, String author) {
         this.title = title;
         this.author = author;
+    }
+
+    public BookDetails getBookDetails() {
+        return bookDetails;
+    }
+
+    public void setBookDetails(BookDetails bookDetails) {
+        this.bookDetails = bookDetails;
     }
 
     public Long getId() {

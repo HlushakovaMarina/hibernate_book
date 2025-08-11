@@ -85,3 +85,5 @@ Caused by: org.hibernate.UnknownEntityTypeException: Unknown entity type: hlusha
 2025-08-07 21:13:15.019 [main] INFO  hlushakovaM.config.AppModule - Book{id=7, title='Новое название книги', author='Новый автор книги'}
 2025-08-07 21:13:15.020 [main] INFO  hlushakovaM.config.AppModule - Book{id=9, title='Новое название книги', author='Новый автор книги'}
 2025-08-07 21:13:15.020 [main] INFO  hlushakovaM.config.AppModule - Book{id=10, title='Преступление и наказание', author='Фёдор Достоевский'}
+2025-08-11 20:13:22.027 [main] INFO  hlushakovaM.config.AppModule - Create book with ID: null
+2025-08-11 20:13:22.276 [main] INFO  hlushakovaM.config.AppModule - Book{id=42, title='Война и мир', author='Лев Толстой'}

@@ -5,11 +5,13 @@ import com.google.inject.Injector;
 import com.google.inject.persist.PersistService;
 import hlushakovaM.config.AppModule;
 import hlushakovaM.model.Book;
+import hlushakovaM.model.BookDetails;
 import hlushakovaM.service.BookService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
+import java.util.Optional;
 
 public class BookApplication {
     private static final Logger logger = LogManager.getLogger(AppModule.class);
@@ -18,28 +20,31 @@ public class BookApplication {
     public static void main(String[] args) {
         Injector injector = Guice.createInjector(new AppModule());
         PersistService persistService = injector.getInstance(PersistService.class);
-        persistService.start(); //только для  гугл джус
+        persistService.start(); //только для Google Guies
 
         BookService service = injector.getInstance(BookService.class);
         try {
-            Book book1 = new Book("Война и мир", "Лев Толстой");
-            Book book2 = new Book("Преступление и наказание", "Фёдор Достоевский");
-            service.save(book1);
-            logger.info("Create book with ID: {}", book1.getId());
-            service.save(book2);
-            logger.info("Create book with ID: {}", book2.getId());
-            logger.info("Книги сохранены");
 
+            Book book1 = new Book("Война и мир", "Лев Толстой");
+            BookDetails bookDetails = new BookDetails("978-5-17-123456-7",1869);
+            //service.saveWithDetails(book1, bookDetails);
+     /*       service.save(book1);*/
+            logger.info("Create book with ID: {}", book1.getId());
+         /*   service.save(book2);*//*
+            logger.info("Create book with ID: {}", book2.getId());
+            logger.info("Книги сохранены");*/
+
+            Optional<Book> bookWithDetails = service.findBookWithDetails(42L);
             List<Book> books = service.findAll();
             books.forEach(logger::info);
 
-            service.autoUpdateBook(book1.getId(),"Новое название книги","Новый автор книги");
+            /*service.autoUpdateBook(book1.getId(),"Новое название книги","Новый автор книги");
             books.forEach(logger::info);
 
             List<Book> byTitle = service.findByTitle("Гарри Поттер и кубок огня");
             byTitle.forEach(logger::info);
             List<Book> byAuthor = service.findByAuthor("Джоан Роулинг");
-            byAuthor.forEach(logger::info);
+            byAuthor.forEach(logger::info);*/
 
         } catch (Exception e) {
             logger.error("Ошибка в работе с БД", e);

@@ -1,6 +1,7 @@
 package hlushakovaM.repository;
 
 import hlushakovaM.model.Book;
+import hlushakovaM.model.BookDetails;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import org.apache.logging.log4j.LogManager;
@@ -18,20 +19,37 @@ public class BookRepository {
         this.em = em;
     }
 
+    public Book saveWithDetails(Book book, BookDetails bookDetails){
+        book.setBookDetails(bookDetails);
+        //bookDetails.setBook(book);
+        return em.merge(book);
+    }
+    public Optional<Book> findBookWithDetails(Long bookId){
+        Book book = em.find(Book.class, bookId);
+        return Optional.ofNullable(book);
+    }
+
+    public void updateBookDetails(Long id, String newIsbn){
+        Book book = em.find(Book.class, id);
+        if(book != null && book.getBookDetails()!=null){
+            book.getBookDetails().setIsbn(newIsbn);
+            em.merge(book);
+        }
+    }
     public List<Book> findAll() {
         return em.createQuery("SELECT b FROM Book b", Book.class).getResultList();
     }
 
-    public Optional<Book> findById(Long id) {
+    /*public Optional<Book> findById(Long id) {
         Book book = em.find(Book.class, id);
         return Optional.ofNullable(book);
-    }
+    }*/
 
-    public Book save(Book book) {
+    /*public Book save(Book book) {
         logger.info("Create book: {}", book);
         em.persist(book);
         return book;
-    }
+    }*/
 
     public Book autoUpdateBook(Long id, String newTitle, String author) {
         logger.info("Updating book with ID: {}", id);
