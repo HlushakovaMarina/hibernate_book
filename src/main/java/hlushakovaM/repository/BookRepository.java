@@ -61,7 +61,6 @@ public class BookRepository {
         Book book = em.find(Book.class, id);
         if (book != null) {
             em.remove(book);
-
         }
     }
 }
