@@ -6,10 +6,12 @@ import com.google.inject.persist.PersistService;
 import hlushakovaM.config.AppModule;
 import hlushakovaM.model.Book;
 import hlushakovaM.model.BookDetails;
+import hlushakovaM.model.Review;
 import hlushakovaM.service.BookService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,16 +27,21 @@ public class BookApplication {
         BookService service = injector.getInstance(BookService.class);
         try {
 
-            Book book1 = new Book("Война и мир", "Лев Толстой");
-            BookDetails bookDetails = new BookDetails("978-5-17-123456-7",1869);
-            //service.saveWithDetails(book1, bookDetails);
+            Book book1 = new Book("Война и мир2", "Лев Толстой");
+            BookDetails bookDetails = new BookDetails("978-5-17-123456-72",1869);
+
      /*       service.save(book1);*/
+            List<Review> reviews = Arrays.asList(new Review("Отличная книга!", 5),
+                    new Review("Классика", 4));
+            book1.setReviews(reviews);
+            service.saveWithDetails(book1, bookDetails, reviews);
+
             logger.info("Create book with ID: {}", book1.getId());
          /*   service.save(book2);*//*
             logger.info("Create book with ID: {}", book2.getId());
             logger.info("Книги сохранены");*/
 
-            Optional<Book> bookWithDetails = service.findBookWithDetails(42L);
+            Optional<Book> bookWithDetails = service.findBookWithDetails(43L);
             List<Book> books = service.findAll();
             books.forEach(logger::info);
 

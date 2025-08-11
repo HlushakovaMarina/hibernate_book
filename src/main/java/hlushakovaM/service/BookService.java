@@ -3,6 +3,7 @@ package hlushakovaM.service;
 import com.google.inject.persist.Transactional;
 import hlushakovaM.model.Book;
 import hlushakovaM.model.BookDetails;
+import hlushakovaM.model.Review;
 import hlushakovaM.repository.BookRepository;
 import jakarta.inject.Inject;
 
@@ -18,17 +19,19 @@ public class BookService {
     }
 
     @Transactional
-    public Book saveWithDetails(Book book, BookDetails bookDetails) {
-        return repository.saveWithDetails(book, bookDetails);
+    public Book saveWithDetails(Book book, BookDetails bookDetails, List<Review> reviews) {
+        return repository.saveWithDetails(book, bookDetails, reviews);
     }
 
     public Optional<Book> findBookWithDetails(Long bookId) {
         return repository.findBookWithDetails(bookId);
     }
-@Transactional
-    public void updateBookDetails(Long id, String newIsbn){
+
+    @Transactional
+    public void updateBookDetails(Long id, String newIsbn) {
         repository.updateBookDetails(id, newIsbn);
     }
+
     public List<Book> findAll() {
         return repository.findAll();
     }

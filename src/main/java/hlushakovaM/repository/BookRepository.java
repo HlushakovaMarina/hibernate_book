@@ -2,6 +2,7 @@ package hlushakovaM.repository;
 
 import hlushakovaM.model.Book;
 import hlushakovaM.model.BookDetails;
+import hlushakovaM.model.Review;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import org.apache.logging.log4j.LogManager;
@@ -19,8 +20,10 @@ public class BookRepository {
         this.em = em;
     }
 
-    public Book saveWithDetails(Book book, BookDetails bookDetails){
+    public Book saveWithDetails(Book book, BookDetails bookDetails, List<Review> reviews){
         book.setBookDetails(bookDetails);
+        book.setReviews(reviews);
+        reviews.forEach(r -> r.setBook(book));
         //bookDetails.setBook(book);
         return em.merge(book);
     }

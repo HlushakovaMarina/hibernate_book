@@ -51,3 +51,10 @@
 2025-08-11 20:13:22.027 [main] INFO  hlushakovaM.config.AppModule - Create book with ID: null
 2025-08-11 20:13:22.276 [main] INFO  hlushakovaM.config.AppModule - Book{id=42, title='Война и мир', author='Лев Толстой'}
 2025-08-11 20:20:05.459 [main] INFO  hlushakovaM.config.AppModule - Create book with ID: null
+2025-08-11 20:47:55.258 [main] INFO  hlushakovaM.config.AppModule - Book{id=42, title='Война и мир', author='Лев Толстой'}
+2025-08-11 20:48:31.662 [main] INFO  hlushakovaM.config.AppModule - Create book with ID: null
+2025-08-11 20:48:33.014 [main] INFO  hlushakovaM.config.AppModule - Book{id=42, title='Война и мир', author='Лев Толстой'}
+2025-08-11 20:50:19.018 [main] INFO  hlushakovaM.config.AppModule - Create book with ID: null
+2025-08-11 20:52:02.588 [main] INFO  hlushakovaM.config.AppModule - Create book with ID: null
+2025-08-11 20:55:12.515 [main] INFO  hlushakovaM.config.AppModule - Create book with ID: null
+2025-08-11 20:55:12.714 [main] INFO  hlushakovaM.config.AppModule - Book{id=43, title='Война и мир2', author='Лев Толстой'}
