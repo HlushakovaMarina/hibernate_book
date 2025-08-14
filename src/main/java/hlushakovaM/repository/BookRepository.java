@@ -6,6 +6,7 @@ import hlushakovaM.model.BookDetails;
 import hlushakovaM.model.Review;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,29 +23,57 @@ public class BookRepository {
         this.em = em;
     }
 
+    public List<Book> findBookWithDetailByIsbn(String isbn) {
+        TypedQuery<Book> query = em.createQuery("SELECT b FROM Book b WHERE b.bookDetails.isbn = :isbn" +
+                "ORDER BY b.bookDetails.publicationYear DESC", Book.class);//сджойнили таблицы
+        query.setParameter("isbn", isbn);
+        return query.getResultList();
+    }
+
+    public long countBooksAfterYear(int year) {
+        TypedQuery<Long> query = em.createQuery("SELECT COUNT(b) FROM Book b WHERE b.bookDetails.publicationYear > :year", Long.class);
+        query.setParameter("year", year);
+        return query.getSingleResult();
+    }
+
+    public List<Review> findReviewByBookId(Long bookId) {
+        TypedQuery<Review> query = em.createQuery("SELECT r FROM Review r WHERE r.book.id = :bookId", Review.class);
+        query.setParameter("bookId", bookId);
+        return query.getResultList();
+    }
+
+    public List<Author>findAuthorsByBookId(Long bookId){
+        TypedQuery<Author> query = em.createQuery("SELECT a FROM Author a JOIN a.books b WHERE b.id = :bookId", Author.class);
+        query.setParameter("bookId", bookId);
+        return query.getResultList();
+    }
+
+
     public Book saveWithDetails(Book book, BookDetails bookDetails,
-                                List<Review> reviews, Set<Author> authors){
+                                List<Review> reviews, Set<Author> authors) {
         book.setBookDetails(bookDetails);
         book.setReviews(reviews);
         book.setAuthors(authors);
-        authors.forEach(a->a.getBooks().add(book) );
+        authors.forEach(a -> a.getBooks().add(book));
         reviews.forEach(r -> r.setBook(book));
 
         //bookDetails.setBook(book);
         return em.merge(book);
     }
-    public Optional<Book> findBookWithDetails(Long bookId){
+
+    public Optional<Book> findBookWithDetails(Long bookId) {
         Book book = em.find(Book.class, bookId);
         return Optional.ofNullable(book);
     }
 
-    public void updateBookDetails(Long id, String newIsbn){
+    public void updateBookDetails(Long id, String newIsbn) {
         Book book = em.find(Book.class, id);
-        if(book != null && book.getBookDetails()!=null){
+        if (book != null && book.getBookDetails() != null) {
             book.getBookDetails().setIsbn(newIsbn);
             em.merge(book);
         }
     }
+
     public List<Book> findAll() {
         return em.createQuery("SELECT b FROM Book b", Book.class).getResultList();
     }

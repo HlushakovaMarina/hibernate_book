@@ -30,25 +30,25 @@ public class BookApplication {
         BookService service = injector.getInstance(BookService.class);
         try {
 
-            Book book1 = new Book("Война и мир4");
+           /* Book book1 = new Book("Война и мир4");
             BookDetails bookDetails = new BookDetails("978-5-17-123456-732", 1869);
             Set<Author> authors = Set.of(new Author("Лев Толстой"));
-            /*       service.save(book1);*/
+            *//*       service.save(book1);*//*
             List<Review> reviews = Arrays.asList(new Review("Отличная книга!", 5),
                     new Review("Классика", 4));
             book1.setReviews(reviews);
             service.saveWithDetails(book1, bookDetails, reviews, authors);
 
             logger.info("Create book with ID: {}", book1.getId());
-            /*   service.save(book2);*//*
+            *//*   service.save(book2);*//**//*
             logger.info("Create book with ID: {}", book2.getId());
-            logger.info("Книги сохранены");*/
+            logger.info("Книги сохранены");*//*
 
             Optional<Book> bookWithDetails = service.findBookWithDetails(43L);
             List<Book> books = service.findAll();
             books.forEach(logger::info);
 
-            /*service.autoUpdateBook(book1.getId(),"Новое название книги","Новый автор книги");
+            *//*service.autoUpdateBook(book1.getId(),"Новое название книги","Новый автор книги");
             books.forEach(logger::info);
 
             List<Book> byTitle = service.findByTitle("Гарри Поттер и кубок огня");
