@@ -34,7 +34,7 @@ application {
     mainClass = 'hlushakovaM.BookApplication'
 }
 shadowJar {
-    archiveFileName.set('book-manager.jar')
+    archiveFileName.set('book-managerShadow.jar')
 }
 compileJava {
     options.encoding = 'UTF-8'

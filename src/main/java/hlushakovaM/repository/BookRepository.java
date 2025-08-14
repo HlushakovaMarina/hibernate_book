@@ -60,16 +60,16 @@ public class BookRepository {
         return book;
     }*/
 
-    public Book autoUpdateBook(Long id, String newTitle, String author) {
+  /*  public Book autoUpdateBook(Long id, String newTitle,  ) {
         logger.info("Updating book with ID: {}", id);
         Book book = em.find(Book.class, id);
         if (book != null) {
             book.setTitle(newTitle);
-            book.setAuthor(author);
+            book.setAuthors(author);
             logger.info("Modified book in context: {}", book);
         }
         return book;
-    }
+    }*/
 
     public List<Book> findByTitle(String title) {
         return em.createQuery("SELECT b FROM Book b WHERE b.title LIKE :title", Book.class)

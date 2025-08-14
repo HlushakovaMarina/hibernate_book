@@ -7,6 +7,7 @@ import hlushakovaM.config.AppModule;
 import hlushakovaM.model.Author;
 import hlushakovaM.model.Book;
 import hlushakovaM.model.BookDetails;
+
 import hlushakovaM.model.Review;
 import hlushakovaM.service.BookService;
 import org.apache.logging.log4j.LogManager;
@@ -29,8 +30,8 @@ public class BookApplication {
         BookService service = injector.getInstance(BookService.class);
         try {
 
-            Book book1 = new Book("Война и мир3");
-            BookDetails bookDetails = new BookDetails("978-5-17-123456-72", 1869);
+            Book book1 = new Book("Война и мир4");
+            BookDetails bookDetails = new BookDetails("978-5-17-123456-732", 1869);
             Set<Author> authors = Set.of(new Author("Лев Толстой"));
             /*       service.save(book1);*/
             List<Review> reviews = Arrays.asList(new Review("Отличная книга!", 5),

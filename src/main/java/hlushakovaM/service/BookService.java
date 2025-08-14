@@ -47,10 +47,10 @@ public class BookService {
         return repository.save(book);
     }*/
 
-    @Transactional
-    public Book autoUpdateBook(Long id, String newTitle, String author) {
+
+    /*public Book autoUpdateBook(Long id, String newTitle, String author) {
         return repository.autoUpdateBook(id, newTitle, author);
-    }
+    }*/
 
     @Transactional
     public void deleteBookById(Long id) {

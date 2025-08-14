@@ -33,6 +33,7 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "author_id")
     )
     private Set<Author> authors = new HashSet<>();
+
     public Book() {
     }
 
@@ -71,6 +72,7 @@ public class Book {
     public void setTitle(String title) {
         this.title = title;
     }
+
 
     public Set<Author> getAuthors() {
         return authors;
