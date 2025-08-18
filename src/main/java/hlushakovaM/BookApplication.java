@@ -30,6 +30,22 @@ public class BookApplication {
         BookService service = injector.getInstance(BookService.class);
         try {
 
+            // 1.
+            List<Book> tolstoyBooks = service.findBooksByLeoTolstoy();
+            tolstoyBooks.forEach(book -> System.out.println(book.getTitle()));
+            //2.
+            List<Book> booksPublishedIn1869 = service.findBooksPublishedIn1869();
+            booksPublishedIn1869.forEach(book -> System.out.println(book.getTitle()));
+            //3.
+            List<Book> booksWithIsbnContaining = service.findBooksWithIsbnContaining(String isbnSubstring);
+            booksWithIsbnContaining.forEach(book -> System.out.println(book.getBookDetails().getIsbn()));
+           //4.
+            List<Review> reviewsForBook = service.findReviewsForBook(Long bookId);
+            reviewsForBook.forEach(book -> System.out.println(book.getId()));
+            //5.
+            List<Object[]> reviewsWithRating5 = service.findReviewsWithRating5();
+            reviewsWithRating5.forEach();
+
            /* Book book1 = new Book("Война и мир4");
             BookDetails bookDetails = new BookDetails("978-5-17-123456-732", 1869);
             Set<Author> authors = Set.of(new Author("Лев Толстой"));

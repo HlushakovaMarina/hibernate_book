@@ -65,6 +65,44 @@ public class BookService {
         return repository.findByAuthor(author);
     }
 
+    //1.
+    public List<Book> findBooksByLeoTolstoy() {
+        return repository.findBooksByLeoTolstoy();
+    }
+    //2.
+    public List<Book> findBooksPublishedIn1869() {
+        return repository.findBooksPublishedIn1869();
+    }
+
+    //3.
+    public List<Book> findBooksWithIsbnContaining(String isbnSubstring) {
+        return repository.findBooksWithIsbnContaining(isbnSubstring);
+    }
+
+    //4.
+    public List<Review> findReviewsForBook(Long bookId) {
+        return repository.findReviewsForBook(bookId);
+    }
+    //5.
+    public List<Object[]> findReviewsWithRating5() {
+        return repository.findReviewsWithRating5();
+    }
+    // 6.
+    public List<Book> findBooksWithTitleContainingWar() {
+        return repository.findBooksWithTitleContainingWar();
+    }
+    // 7.
+    public List<Author> findAuthorsForBook(Long bookId) {
+        return repository.findAuthorsForBook(bookId);
+    }
+    // 8.
+    public Long countReviewsForBook(Long bookId) {
+        return repository.countReviewsForBook(bookId);
+    }
+    // 9.
+    public List<Book> findBooksWithoutReviews() {
+        return repository.findBooksWithoutReviews();
+    }
    /* @Transactional
     public Optional<Book> update(Long id, String newTitle) {
         Optional<Book> bookOptional = repository.findById(id);

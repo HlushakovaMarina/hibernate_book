@@ -42,13 +42,79 @@ public class BookRepository {
         return query.getResultList();
     }
 
-    public List<Author>findAuthorsByBookId(Long bookId){
+    public List<Author> findAuthorsByBookId(Long bookId) {
         TypedQuery<Author> query = em.createQuery("SELECT a FROM Author a JOIN a.books b WHERE b.id = :bookId", Author.class);
         query.setParameter("bookId", bookId);
         return query.getResultList();
     }
 
+    // 1: Найти книги Льва Толстого
+    public List<Book> findBooksByLeoTolstoy() {
+        TypedQuery<Book> query = em.createQuery(
+                "SELECT b FROM Book b JOIN b.authors a WHERE a.name = :authorName ORDER BY b.title ASC",
+                Book.class
+        );
+        query.setParameter("authorName", "Лев Толстой");
+        return query.getResultList();
+    }
 
+    // 2: Найти книги, изданные в 1869 году
+    public List<Book> findBooksPublishedIn1869() {
+        TypedQuery<Book> query = em.createQuery(
+                "SELECT b FROM Book b WHERE b.bookDetails.publicationYear = 1869", Book.class);
+        return query.getResultList();
+    }
+
+    // 3: Найти книги с ISBN, содержащим "123456"
+    public List<Book> findBooksWithIsbnContaining(String isbnSubstring) {
+        TypedQuery<Book> query = em.createQuery(
+                "SELECT b FROM Book b WHERE LOWER(b.bookDetails.isbn) LIKE LOWER(:isbnSubstring)", Book.class);
+        query.setParameter("isbnSubstring", "%" + isbnSubstring + "%");
+        return query.getResultList();
+    }
+
+    // 4: Найти отзывы для книги "Война и мир" (с ID 1)
+    public List<Review> findReviewsForBook(Long bookId) {
+        TypedQuery<Review> query = em.createQuery(
+                "SELECT r FROM Review r WHERE r.book.id = :bookId", Review.class);
+        query.setParameter("bookId", bookId);
+        return query.getResultList();
+    }
+
+    // 5: Найти отзывы с рейтингом 5
+    public List<Object[]> findReviewsWithRating5() {
+        TypedQuery<Object[]> query = em.createQuery(
+                "SELECT r.text, r.rating FROM Review r WHERE r.rating = 5", Object[].class);
+        return query.getResultList();
+    }
+
+    // 6: Найти книги с названием, содержащим "война"
+    public List<Book> findBooksWithTitleContainingWar() {
+        TypedQuery<Book> query = em.createQuery(
+                "SELECT b FROM Book b WHERE LOWER(b.title) LIKE LOWER('%война%') ORDER BY b.title", Book.class);
+        return query.getResultList();
+    }
+    // 7: Найти авторов книги "Мастер и Маргарита" (с ID 5)
+    public List<Author> findAuthorsForBook(Long bookId) {
+        TypedQuery<Author> query = em.createQuery(
+                "SELECT a FROM Author a JOIN a.books b WHERE b.id = :bookId", Author.class);
+        query.setParameter("bookId", bookId);
+        return query.getResultList();
+    }
+
+    // 8: Подсчёт отзывов для книги "Преступление и наказание" (с ID 2)
+    public Long countReviewsForBook(Long bookId) {
+        TypedQuery<Long> query = em.createQuery(
+                "SELECT COUNT(r) FROM Review r WHERE r.book.id = :bookId", Long.class);
+        query.setParameter("bookId", bookId);
+        return query.getSingleResult();
+    }
+    // 9: Найти книги без отзывов
+    public List<Book> findBooksWithoutReviews() {
+        TypedQuery<Book> query = em.createQuery(
+                "SELECT b FROM Book b LEFT JOIN b.reviews r WHERE r IS NULL ORDER BY b.title", Book.class);
+        return query.getResultList();
+    }
     public Book saveWithDetails(Book book, BookDetails bookDetails,
                                 List<Review> reviews, Set<Author> authors) {
         book.setBookDetails(bookDetails);
