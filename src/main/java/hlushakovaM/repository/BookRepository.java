@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+
 public class BookRepository {
     private static final Logger logger = LogManager.getLogger(BookRepository.class);
     private final EntityManager em;
@@ -63,6 +64,7 @@ public class BookRepository {
         return em.createQuery(query).getSingleResult();
     }
 
+    //4.
     public List<Book> findBooksByIsbn(String isbn) {
         CriteriaBuilder cb = em.getCriteriaBuilder();//интерфейс для зпросов
         CriteriaQuery<Book> query = cb.createQuery(Book.class);
@@ -73,6 +75,7 @@ public class BookRepository {
         return em.createQuery(query).getResultList();
     }
 
+    //9.
     public List<Book> findBooksWithoutReviews() {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Book> query = cb.createQuery(Book.class);
@@ -83,4 +86,40 @@ public class BookRepository {
                 .orderBy(cb.asc(book.get("title")));
         return em.createQuery(query).getResultList();
     }
+
+    //1.
+    public List<Book> findBooksByYear1(int year) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Book> query = cb.createQuery(Book.class);
+        Root<Book> book = query.from(Book.class);
+        Join<Book, BookDetails> bookDetails = book.join("bookDetails");
+        query.select(book)
+                .where(cb.equal(bookDetails.get("publicationYear"), year))
+                .orderBy(cb.desc(bookDetails.get("publicationYear")));
+        return em.createQuery(query).getResultList();
+    }
+
+    //2.
+    public List<Book> findBookByAntonChehov(String authorName) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Book> query = cb.createQuery(Book.class);
+        Root<Book> book = query.from(Book.class);
+        Join<Book, Author> author = book.join("author");
+        query.select(book)
+                .where(cb.equal(author.get("name"), authorName))
+                .orderBy(cb.asc(book.get("title")));
+        return em.createQuery(query).getResultList();
+    }
+
+    //3.
+    public List<Book> findBooksByRating4(int rating) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Book> query = cb.createQuery(Book.class);
+        Root<Book> book = query.from(Book.class);
+        Join<Book, Review> reviews = book.join("reviews");
+        query.select(book)
+                .where(cb.equal(reviews.get("rating"), rating));
+        return em.createQuery(query).getResultList();
+    }
+    public List<Book> find
 }
